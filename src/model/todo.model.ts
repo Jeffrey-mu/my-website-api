@@ -1,47 +1,43 @@
-const { DataTypes } = require("sequelize");
-const sequelize = require("../db");
+import { DataTypes } from 'sequelize'
+import sequelize from '../utils/connect'
 
 /**
- * 用户模型
+ * 事件模型
  */
-
-const UserModel = sequelize.define(
-  "Todo",
+const TodoModel = sequelize.define(
+  'Todo',
   {
     id: {
       type: DataTypes.BIGINT,
       autoIncrement: true,
       primaryKey: true,
     },
-    username: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    sex: {
+    state: {
+      type: DataTypes.STRING,
+    },
+    title: {
       type: DataTypes.STRING,
     },
     date: {
       type: DataTypes.STRING,
     },
-    hobby: {
+    description: {
       type: DataTypes.STRING,
     },
-    age: {
-      type: DataTypes.INET,
-    },
-    email: {
-      type: DataTypes.STRING,
-    },
-    password: {
-      type: DataTypes.STRING,
+    create_date: {
+      type: DataTypes.DATE,
     },
   },
   {
-    tableName: "users",
+    tableName: 'todo',
     paranoid: true,
-    deletedAt: "isDelete",
+    deletedAt: 'isDelete',
     timestamps: false,
   }
-);
+)
 
-module.exports = UserModel;
+export default TodoModel
